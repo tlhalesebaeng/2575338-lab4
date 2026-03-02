@@ -23,6 +23,14 @@ const getCountryInfo = async (countryName) => {
             <img src="${country.flags.svg}" alt="${country.name.common} flag">
         `;
 
+        // Fetch bordering countries
+        const borders = [];
+        country.borders.map(async (borderId) => {
+            const border = await getCountry(borderId, 'alpha');
+            borders.push(border);
+        });
+        
+        console.log(borders);
 
     } catch(error) {
 
