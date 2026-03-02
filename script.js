@@ -4,7 +4,7 @@ const getCountry = async (id, type) => {
     return data[0];
 }
 
-const getCountryInfo = async (countryName) => {
+const searchCountry = async (countryName) => {
     let spinner = null;
     try {
         // Show loading spinner
@@ -16,10 +16,12 @@ const getCountryInfo = async (countryName) => {
 
         // Update DOM
         document.getElementById('country-info').innerHTML = `
-            <h2>${country.name.common}</h2>
-            <p><strong>Capital:</strong> ${country.capital[0]}</p>
-            <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
-            <p><strong>Region:</strong> ${country.region}</p>
+            <section>
+                <h2>${country.name.common}</h2>
+                <p><strong>Capital:</strong> ${country.capital[0]}</p>
+                <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
+                <p><strong>Region:</strong> ${country.region}</p>
+            </section>
             <img src="${country.flags.svg}" alt="${country.name.common} flag">
         `;
 
@@ -47,4 +49,7 @@ const getCountryInfo = async (countryName) => {
     }
 }
 
-getCountryInfo("South Africa")
+document.getElementById('search-btn').addEventListener('click', () => {
+    const country = document.getElementById('country-input').value;
+    searchCountry(country);
+});
