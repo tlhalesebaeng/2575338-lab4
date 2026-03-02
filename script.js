@@ -23,14 +23,24 @@ const getCountryInfo = async (countryName) => {
             <img src="${country.flags.svg}" alt="${country.name.common} flag">
         `;
 
-        // Fetch bordering countries
-        const borders = [];
         country.borders.map(async (borderId) => {
+            // Fetch bordering countries
             const border = await getCountry(borderId, 'alpha');
-            borders.push(border);
+
+            // Update bordering countries section
+
+            const html = `
+                <section>
+                    <h2>${border.name.common}</h2>
+                    <p><strong>Capital:</strong> ${border.capital[0]}</p>
+                    <p><strong>Population:</strong> ${border.population.toLocaleString()}</p>
+                    <p><strong>Region:</strong> ${border.region}</p>
+                    <img src="${border.flags.svg}" alt="${border.name.common} flag">
+                </section>
+            `;
+
+            document.getElementById('bordering-countries').innerHTML += html;
         });
-        
-        console.log(borders);
 
     } catch(error) {
 
