@@ -1,5 +1,5 @@
-const getCountry = async (countryName) => {
-    const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
+const getCountry = async (id, type) => {
+    const response = await fetch(`https://restcountries.com/v3.1/${type}/${id}`);
     const data = await response.json();
     return data[0];
 }
@@ -12,7 +12,7 @@ const getCountryInfo = async (countryName) => {
         spinner.style.display = 'block';
 
         // Fetch country data
-        const country = await getCountry(countryName);
+        const country = await getCountry(countryName, 'name');
 
         // Update DOM
         document.getElementById('country-info').innerHTML = `
