@@ -55,7 +55,9 @@ header {
 .spinner {
     /* Your styling */
     width: 10px;
-    background-color: red;
+    height: 100px;
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0.4);
     animation: spin 1s linear infinite; /* Required */
 }
 
