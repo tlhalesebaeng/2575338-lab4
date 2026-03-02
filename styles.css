@@ -1,7 +1,102 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 30px;
+    line-height: 28px;
+}
+
+body, main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    max-width: 700px;
+    padding: 30px;
+}
+
+.search-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-container input {
+    height: 30px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+}
+
+.search-container button {
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgb(9, 105, 218);
+    color: rgb(255, 255, 255);
+}
+
+.search-container button:hover {
+    cursor: pointer;
+}
+
 .spinner {
     /* Your styling */
     display: none;
     animation: spin 1s linear infinite; /* Required */
+}
+
+.country-card {
+    height: 180px;
+    width: 100%;
+    margin: 30px 0px;
+    padding: 8px 8px 8px 30px;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+.country-card h2 {
+    margin: 16px 0px 10px 0px;
+}
+
+.country-card img {
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+.border-grid {
+    max-width: 700px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+.border-grid section {
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+}
+
+.border-grid img {
+    width: 100%;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
 }
 
 @keyframes spin {
