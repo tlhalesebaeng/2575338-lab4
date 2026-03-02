@@ -14,6 +14,8 @@ const searchCountry = async (countryName) => {
         document.getElementById('error-message').style.display = 'none';
         document.getElementById('country-info').style.display = 'none';
 
+        document.getElementById('bordering-countries').innerHTML = '';
+
         // Fetch country data
         const country = await getCountry(countryName, 'name');
 
@@ -33,22 +35,25 @@ const searchCountry = async (countryName) => {
 
             document.getElementById('bordering-countries').style.display = 'grid';
 
-            country.borders.map(async (borderId) => {
-                // Fetch bordering countries
+            if(country.borders) {
+                country.borders.map(async (borderId) => {
+                    // Fetch bordering countries
 
-                const border = await getCountry(borderId, 'alpha');
+                    const border = await getCountry(borderId, 'alpha');
 
-                // Update bordering countries section
+                    // Update bordering countries section
 
-                const html = `
-                    <section>
-                        <h2>${border.name.common}</h2>
-                        <img src="${border.flags.svg}" alt="${border.name.common} flag">
-                    </section>
-                `;
+                    const html = `
+                        <section>
+                            <h2>${border.name.common}</h2>
+                            <img src="${border.flags.svg}" alt="${border.name.common} flag">
+                        </section>
+                    `;
 
-                document.getElementById('bordering-countries').innerHTML += html;
-            });
+                    document.getElementById('bordering-countries').innerHTML += html;
+                });
+            }
+            
         } else {
             throw new Error('Country not found. Please check your name and try again')
         }
