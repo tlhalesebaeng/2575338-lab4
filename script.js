@@ -13,10 +13,22 @@ const getCountryInfo = async (countryName) => {
 
         // Fetch country data
         const country = await getCountry(countryName);
-        console.log(country);
+
+        // Update DOM
+        document.getElementById('country-info').innerHTML = `
+            <h2>${country.name.common}</h2>
+            <p><strong>Capital:</strong> ${country.capital[0]}</p>
+            <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
+            <p><strong>Region:</strong> ${country.region}</p>
+            <img src="${country.flags.svg}" alt="${country.name.common} flag">
+        `;
+
+
     } catch(error) {
 
     } finally {
         spinner.style.display = 'none';
     }
 }
+
+getCountryInfo("South Africa")
